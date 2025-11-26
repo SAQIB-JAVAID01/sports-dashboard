@@ -31,6 +31,27 @@ import sys
 import os
 from dotenv import load_dotenv
 
+# Desktop UI and async support
+try:
+    from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel
+    from PyQt6.QtCore import Qt
+    PYQT6_AVAILABLE = True
+except ImportError:
+    PYQT6_AVAILABLE = False
+
+try:
+    from qasync import asyncSlot
+    QASYNC_AVAILABLE = True
+except ImportError:
+    QASYNC_AVAILABLE = False
+
+# Advanced ML library
+try:
+    from catboost import CatBoostClassifier, CatBoostRegressor
+    CATBOOST_AVAILABLE = True
+except ImportError:
+    CATBOOST_AVAILABLE = False
+
 # Load environment variables for cloud deployment
 load_dotenv()
 
