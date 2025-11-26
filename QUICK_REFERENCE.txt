@@ -1,0 +1,81 @@
+# 🚀 QUICK REFERENCE - GET YOUR LINKS IN 4 STEPS
+
+## Your Unique URLs Format:
+```
+🌐 Web:    https://YOUR-USERNAME-sports-dashboard.streamlit.app
+📱 Mobile: https://YOUR-USERNAME-sports-dashboard.streamlit.app
+```
+
+---
+
+## STEP 1: GitHub Account (2 minutes)
+```
+1. Go: https://github.com/signup
+2. Create account with email
+3. Verify email
+```
+
+---
+
+## STEP 2: Create Repository (1 minute)
+```
+1. Go: https://github.com/new
+2. Name: sports-dashboard
+3. Make: PUBLIC
+4. Create Repository
+5. Copy the URL
+```
+
+---
+
+## STEP 3: Push Code (2 minutes)
+Replace `YOUR-USERNAME` with your actual GitHub username:
+
+```powershell
+cd "c:\Users\Admin\New Recordings\udemy\Data Analyst Bootcamp\Python\1-python basics\Sports-Project-mainRev8\Sports-Project-main"
+
+git add .
+git commit -m "Dashboard Ready"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/sports-dashboard.git
+git push -u origin main
+```
+
+---
+
+## STEP 4: Deploy to Streamlit Cloud (3 minutes)
+```
+1. Go: https://streamlit.io/cloud
+2. Sign in: GitHub
+3. Click: New app
+4. Select: sports-dashboard repo
+5. Main file: comprehensive_sports_dashboard.py
+6. Click: Deploy
+7. Wait: 2-3 minutes
+```
+
+---
+
+## YOUR LINK IS READY!
+
+Example (if username is `johnsmith`):
+```
+https://johnsmith-sports-dashboard.streamlit.app
+```
+
+✅ Works on Web
+✅ Works on Mobile (same URL)
+✅ Works 24/7
+✅ FREE
+
+---
+
+## Dashboard Features:
+- 📊 Overview (accuracy, teams, league info)
+- 🎯 Predictions (real-time ML models)
+- 🔬 Model Analysis (ensemble info, features)
+- 📈 Performance (trends, metrics)
+- 💾 Export (CSV download)
+
+Total Time: ~8 minutes
+Status: READY TO DEPLOY

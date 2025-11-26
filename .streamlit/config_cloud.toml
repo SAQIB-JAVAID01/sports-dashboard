@@ -1,0 +1,30 @@
+# Streamlit Cloud Deployment Configuration
+# Deploy with: streamlit run comprehensive_sports_dashboard.py
+
+[theme]
+primaryColor = "#1e40af"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+textColor = "#1e293b"
+font = "sans serif"
+
+[server]
+# Cloud deployment settings
+headless = true
+enableCORS = true
+enableXsrfProtection = false
+maxUploadSize = 200
+
+[client]
+showErrorDetails = false
+toolbarMode = "viewer"
+
+[logger]
+level = "error"
+
+[runner]
+magicEnabled = true
+fastReruns = true
+
+[browser]
+gatherUsageStats = false

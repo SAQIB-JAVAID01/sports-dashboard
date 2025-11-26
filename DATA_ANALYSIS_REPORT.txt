@@ -1,0 +1,137 @@
+
+==================== NFL ====================
+Rows: 2,720
+Columns: 9
+File Size: 123.3 KB
+
+COLUMNS & DATA TYPES:
+  • date            | object       | Missing: 0      | Unique: 730    | Sample: 2015-09-01
+  • home_team       | object       | Missing: 0      | Unique: 32     | Sample: Team0
+  • away_team       | object       | Missing: 0      | Unique: 32     | Sample: Team1
+  • home_score      | int64        | Missing: 0      | Unique: 34     | Sample: 21
+  • away_score      | int64        | Missing: 0      | Unique: 35     | Sample: 25
+  • ou_line         | float64      | Missing: 0      | Unique: 120    | Sample: 46.5
+  • total_score     | int64        | Missing: 0      | Unique: 48     | Sample: 46
+  • over_hit        | int64        | Missing: 0      | Unique: 2      | Sample: 0
+  • season          | int64        | Missing: 0      | Unique: 10     | Sample: 2015
+
+TOTAL MISSING VALUES: 0
+MISSING VALUES: 0 — PERFECT
+
+DUPLICATE ROWS: 0
+→ NO DUPLICATES — CLEAN
+
+ALL REQUIRED COLUMNS PRESENT
+DATE RANGE: 2015-09-01 → 2025-08-31
+SEASONS: 2015 → 2024 (10 seasons)
+O/U LINE: Mean=45.04, Std=2.05
+TOTAL SCORE: Mean=50.08
+OVER HIT RATE: 73.3% | UNDER: 26.7%
+→ WARNING: IMBALANCED — MAY HURT MODEL
+
+VERDICT: DATA HAS ISSUES: imbalanced target
+--------------------------------------------------
+
+==================== NBA ====================
+Rows: 12,300
+Columns: 9
+File Size: 569.1 KB
+
+COLUMNS & DATA TYPES:
+  • date            | object       | Missing: 0      | Unique: 730    | Sample: 2015-09-01
+  • home_team       | object       | Missing: 0      | Unique: 32     | Sample: Team0
+  • away_team       | object       | Missing: 0      | Unique: 32     | Sample: Team1
+  • home_score      | int64        | Missing: 0      | Unique: 37     | Sample: 25
+  • away_score      | int64        | Missing: 0      | Unique: 37     | Sample: 26
+  • ou_line         | float64      | Missing: 0      | Unique: 139    | Sample: 220.8
+  • total_score     | int64        | Missing: 0      | Unique: 53     | Sample: 51
+  • over_hit        | int64        | Missing: 0      | Unique: 1      | Sample: 0
+  • season          | int64        | Missing: 0      | Unique: 10     | Sample: 2015
+
+TOTAL MISSING VALUES: 0
+MISSING VALUES: 0 — PERFECT
+
+DUPLICATE ROWS: 0
+→ NO DUPLICATES — CLEAN
+
+ALL REQUIRED COLUMNS PRESENT
+DATE RANGE: 2015-09-01 → 2025-08-31
+SEASONS: 2015 → 2024 (10 seasons)
+O/U LINE: Mean=219.98, Std=2.01
+TOTAL SCORE: Mean=50.03
+OVER HIT RATE: 0.0% | UNDER: 100.0%
+→ WARNING: IMBALANCED — MAY HURT MODEL
+
+VERDICT: DATA HAS ISSUES: imbalanced target
+--------------------------------------------------
+
+==================== NHL ====================
+Rows: 13,100
+Columns: 9
+File Size: 543.5 KB
+
+COLUMNS & DATA TYPES:
+  • date            | object       | Missing: 0      | Unique: 730    | Sample: 2015-09-01
+  • home_team       | object       | Missing: 0      | Unique: 32     | Sample: Team0
+  • away_team       | object       | Missing: 0      | Unique: 32     | Sample: Team1
+  • home_score      | int64        | Missing: 0      | Unique: 14     | Sample: 2
+  • away_score      | int64        | Missing: 0      | Unique: 12     | Sample: 7
+  • ou_line         | float64      | Missing: 0      | Unique: 141    | Sample: 3.5
+  • total_score     | int64        | Missing: 0      | Unique: 18     | Sample: 9
+  • over_hit        | int64        | Missing: 0      | Unique: 2      | Sample: 1
+  • season          | int64        | Missing: 0      | Unique: 10     | Sample: 2015
+
+TOTAL MISSING VALUES: 0
+MISSING VALUES: 0 — PERFECT
+
+DUPLICATE ROWS: 1
+→ DATA HAS DUPLICATES — NEEDS CLEANING
+
+ALL REQUIRED COLUMNS PRESENT
+DATE RANGE: 2015-09-01 → 2025-08-31
+SEASONS: 2015 → 2024 (10 seasons)
+O/U LINE: Mean=5.51, Std=2.01
+TOTAL SCORE: Mean=6.02
+OVER HIT RATE: 54.5% | UNDER: 45.5%
+→ BALANCE: GOOD
+
+VERDICT: DATA IS GOOD — MINOR CLEAN NEEDED
+--------------------------------------------------
+
+==================== MLB ====================
+Rows: 24,300
+Columns: 9
+File Size: 1013.3 KB
+
+COLUMNS & DATA TYPES:
+  • date            | object       | Missing: 0      | Unique: 730    | Sample: 2015-09-01
+  • home_team       | object       | Missing: 0      | Unique: 32     | Sample: Team0
+  • away_team       | object       | Missing: 0      | Unique: 32     | Sample: Team1
+  • home_score      | int64        | Missing: 0      | Unique: 13     | Sample: 1
+  • away_score      | int64        | Missing: 0      | Unique: 14     | Sample: 2
+  • ou_line         | float64      | Missing: 0      | Unique: 145    | Sample: 7.5
+  • total_score     | int64        | Missing: 0      | Unique: 19     | Sample: 3
+  • over_hit        | int64        | Missing: 0      | Unique: 2      | Sample: 0
+  • season          | int64        | Missing: 0      | Unique: 10     | Sample: 2015
+
+TOTAL MISSING VALUES: 0
+MISSING VALUES: 0 — PERFECT
+
+DUPLICATE ROWS: 4
+→ DATA HAS DUPLICATES — NEEDS CLEANING
+
+ALL REQUIRED COLUMNS PRESENT
+DATE RANGE: 2015-09-01 → 2025-08-31
+SEASONS: 2015 → 2024 (10 seasons)
+O/U LINE: Mean=8.52, Std=2.00
+TOTAL SCORE: Mean=6.02
+OVER HIT RATE: 20.4% | UNDER: 79.6%
+→ WARNING: IMBALANCED — MAY HURT MODEL
+
+VERDICT: DATA HAS ISSUES: duplicates, imbalanced target
+--------------------------------------------------
+
+================================================================================
+TOTAL GAMES ACROSS ALL SPORTS: 52,420
+DATASETS ANALYZED: 4 / 4
+DEEP ANALYSIS COMPLETE
