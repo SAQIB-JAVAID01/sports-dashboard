@@ -98,6 +98,59 @@ st.set_page_config(
     }
 )
 
+# ===== DATA SOURCE HANDLER (CSV + API Fallback) =====
+@st.cache_data(ttl=3600)
+def load_local_data(sport):
+    """Load data from local CSV files first (faster, no API key needed)"""
+    csv_files = {
+        'NFL': 'nfl_games.csv',
+        'NBA': 'nba_games.csv',
+        'MLB': 'mlb_games.csv',
+        'NHL': 'NHL_Dataset/game_plays.csv'
+    }
+    
+    filepath = csv_files.get(sport)
+    if filepath and Path(filepath).exists():
+        try:
+            df = pd.read_csv(filepath)
+            return df, "local"
+        except Exception as e:
+            st.warning(f"Could not load local CSV: {e}")
+    return None, None
+
+def get_api_games(sport, api_key=None):
+    """Fetch from API if available and API key exists"""
+    if not api_key:
+        api_key = os.getenv('APISPORTS_KEY')
+    
+    if not api_key:
+        return None
+    
+    try:
+        if MULTI_LEAGUE_API_AVAILABLE:
+            api = get_multi_league_api()
+            games = api.get_today_games(sport, api_key)
+            return games
+    except Exception as e:
+        st.warning(f"API Error: {e}")
+    
+    return None
+
+def get_game_data(sport):
+    """Smart data loader: Try local CSV first, then API, then return None"""
+    # Try local CSV first (fastest, no key needed)
+    local_df, source = load_local_data(sport)
+    if local_df is not None and not local_df.empty:
+        return local_df, "local_csv"
+    
+    # Try API if local fails
+    api_games = get_api_games(sport)
+    if api_games:
+        return api_games, "api"
+    
+    # Return empty dataframe with message
+    return pd.DataFrame(), "none"
+
 # ===== PERFORMANCE OPTIMIZATION =====
 # Cache expensive computations to reduce load time
 @st.cache_resource
@@ -112,16 +165,12 @@ def load_models(sport):
 
 @st.cache_data(ttl=3600)
 def load_game_data(sport):
-    """Cache game data for 1 hour to reduce file I/O"""
-    csv_files = {
-        'NFL': 'nfl_games.csv',
-        'NBA': 'nba_games.csv',
-        'MLB': 'mlb_games.csv',
-        'NHL': 'NHL_Dataset/game_plays.csv'
-    }
-    file_path = csv_files.get(sport)
-    if file_path and Path(file_path).exists():
-        return pd.read_csv(file_path)
+    """Smart loader: Local CSV first (fast, no key needed), then API fallback"""
+    df, source = get_game_data(sport)
+    
+    if df is not None and not df.empty:
+        return df
+    
     return pd.DataFrame()
 
 @st.cache_data(ttl=300)
@@ -508,6 +557,15 @@ def main():
     
     # Metrics row
     col1, col2, col3, col4 = st.columns(4)
+    
+    # Show data source status
+    game_data, data_source = get_game_data(sport)
+    if data_source == "local_csv":
+        st.success(f"✅ Data Source: Local CSV ({len(game_data)} games available)")
+    elif data_source == "api":
+        st.info(f"📡 Data Source: API-Sports ({len(game_data)} games available)")
+    else:
+        st.warning("⚠️ Data Source: No data loaded - CSV files or API key not found")
     
     with col1:
         st.markdown("""
